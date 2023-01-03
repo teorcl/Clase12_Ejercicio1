@@ -13,17 +13,9 @@ class ProductsTableViewController: UITableViewController {
     private struct Const {
         static let cellIdentifier = "ProductCell"
     }
-    
-    
-    let brain : ProductsBrainProtocol = ProductsBrain()
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
         
-        brain.setTableViewController(self)
-    }
-    
+    let brain : ProductsBrainProtocol = ProductsBrain()
+        
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         brain.getNumberOfProducts()
     }

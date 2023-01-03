@@ -8,20 +8,16 @@
 import Foundation
 
 protocol ProductsBrainProtocol {
-    func setTableViewController(_ tableViewController: ProductsTableViewControllerProtocol)
     func getNumberOfProducts() -> Int
     func getProductForIndex(for index: Int) -> Product
 }
 
 class ProductsBrain {
-    weak var tableViewController: ProductsTableViewControllerProtocol?
+
     let productsStorage: ProductsStorageProtocol = ProductsStorage()
 }
 
 extension ProductsBrain: ProductsBrainProtocol {
-    func setTableViewController(_ tableViewController: ProductsTableViewControllerProtocol) {
-        self.tableViewController = tableViewController
-    }
     
     func getNumberOfProducts() -> Int {
         productsStorage.getNumberOfProducts()
