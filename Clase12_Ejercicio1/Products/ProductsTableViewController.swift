@@ -7,9 +7,6 @@
 
 import UIKit
 
-protocol ProductsTableViewControllerProtocol: AnyObject {
-    
-}
 
 class ProductsTableViewController: UITableViewController {
     
@@ -38,22 +35,19 @@ class ProductsTableViewController: UITableViewController {
         cell.setNumberOfProducts(product.number)
         let productImage = UIImage(named: product.image)
         cell.setProductImage(productImage)
-        cell.accessoryType = .none
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        // Esto lo debo procesar el cerebro
-        if tableView.cellForRow(at: indexPath)?.accessoryType == .checkmark {
-            tableView.cellForRow(at: indexPath)?.accessoryType = .none
+        
+        guard let cell = tableView.cellForRow(at: indexPath) else {return}
+        
+        if cell.accessoryType == .checkmark {
+            cell.accessoryType = .none
         } else {
-            tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+            cell.accessoryType = .checkmark
         }
     }
-    
-}
-
-extension ProductsTableViewController: ProductsTableViewControllerProtocol {
     
 }
